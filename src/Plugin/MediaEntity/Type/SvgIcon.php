@@ -176,6 +176,12 @@ class SvgIcon extends MediaTypeBase {
       $output = $thumbnail_uri;
     }
     else {
+      $svg2png_path = \Drupal::config('media_entity_icon.settings')
+        ->get('svg2png_path');
+      if (empty($svg2png_path)) {
+        return FALSE;
+      }
+
       $thumbnail_uri = $this->getThumbnailUri($media);
       $thumbnail_path = $this->fileSystem->realpath($thumbnail_uri);
       file_prepare_directory($this->thumbnailDir, FILE_CREATE_DIRECTORY);
@@ -198,9 +204,14 @@ class SvgIcon extends MediaTypeBase {
 
       // Convert via svg2png.
       $png_tmp = $this->fileSystem->realpath($tmp . '.png');
-      $cmd = 'svg2png ' . $svg_tmp
-        . ' --output=' . $png_tmp
-        . ' --width=500';
+      $cmd = $svg2png_path
+        . ' ' . $svg_tmp
+        . ' --output=' . $png_tmp;
+      $thumbnail_width = \Drupal::config('media_entity_icon.settings')
+        ->get('thumbnail_width');
+      if (!empty($thumbnail_width)) {
+        $cmd .= ' --width=' . $thumbnail_width;
+      }
       try {
         exec($cmd);
         if (file_unmanaged_move($png_tmp, $thumbnail_path, FILE_EXISTS_REPLACE)) {
