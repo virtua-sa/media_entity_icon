@@ -1,0 +1,1 @@
+Media entity icon
