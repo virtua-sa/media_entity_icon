@@ -32,6 +32,15 @@ Related icons can be managed as a dedicated tab on the SVG media entity: /media/
 Accessing to the page requires the "access related icons" permission.  
 Creating icons automatically or via the related icon page requires either "create media" or "autocreate icon" permission.
 
+## Recommanded
+
+For thumbnail generation, we advise you to install svg2png (requires nodejs):
+```
+npm install -g svg2png
+```
+
+## Project
+
 Sandbox page: https://www.drupal.org/sandbox/aerzas/2902225
 
 Maintainers:
