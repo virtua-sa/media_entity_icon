@@ -13,7 +13,7 @@ media_entity_icon.settings:
   path: '/admin/config/media/media_entity_icon'
   defaults:
     _form: '\Drupal\media_entity_icon\Form\SettingsForm'
-    _title: 'Icon settings'
+    _title: 'Icons settings'
   options:
     _admin_route: TRUE
   requirements:

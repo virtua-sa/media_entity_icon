@@ -34,16 +34,21 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('media_entity_icon.settings');
 
-    $form['thumbnail_width'] = array(
+    $form['thumbnail'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Thumbnail generation'),
+    ];
+
+    $form['thumbnail']['thumbnail_width'] = array(
       '#type' => 'number',
       '#min' => 1,
       '#step' => 1,
       '#title' => $this->t('Thumbnail width'),
-      '#description' => $this->t('The width at which the png thumbnail will be generated. If none is provided, the viewbox of the icon will be used.'),
+      '#description' => $this->t('The width at which the PNG thumbnail will be generated. If none is provided, the viewbox of the icon will be used.'),
       '#default_value' => $config->get('thumbnail_width'),
     );
 
-    $form['svg2png_path'] = array(
+    $form['thumbnail']['svg2png_path'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('SVG2PNG path'),
       '#description' => $this->t('SVG2PNG binary location, if it is installed globally "svg2png" may be sufficient. If none is provided no PNG thumbnail will generated.'),
