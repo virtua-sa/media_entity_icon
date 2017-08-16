@@ -32,6 +32,27 @@ Related icons can be managed as a dedicated tab on the SVG media entity: /media/
 Accessing to the page requires the "access related icons" permission.  
 Creating icons automatically or via the related icon page requires either "create media" or "autocreate icon" permission.
 
+## Working with SVG sprites
+
+An icon must be coupled with a sprite to work, the SVG sprite entity represents the source file and the SVG icon a pointer to a symbol within it.
+
+The SVG parser expect a wrapping ```<svg>```, in which each icon is defined by a ```<symbol>``` with an "id" attribute and some size attributes (either "viewbox" or "width" and "height).
+
+For example, a very simple SVG sprite with a square, a disc and a triangle:
+```
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="square" viewBox="0 0 30 30">
+    <rect x="0" y="0" width="30" height="30"/>
+  </symbol>
+  <symbol id="disc" viewBox="0 0 30 30">
+    <circle cx="15" cy="15" r="15"/>
+  </symbol>
+  <symbol id="triangle" viewBox="0 0 30 30">
+    <polygon points="0 30,30 30,15 0"/>
+  </symbol>
+</svg>
+```
+
 ## Recommanded
 
 For thumbnail generation, we advise you to install svg2png (requires nodejs):
@@ -41,7 +62,7 @@ npm install -g svg2png
 
 ## Project
 
-Sandbox page: https://www.drupal.org/sandbox/aerzas/2902225
+Project page: https://www.drupal.org/project/media_entity_icon
 
 Maintainers:
- - Nicolas Ricklin (@Aerzas) drupal.org/user/3180833
+ - Nicolas Ricklin (@Aerzas) https://www.drupal.org/user/3180833
