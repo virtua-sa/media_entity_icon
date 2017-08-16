@@ -146,7 +146,7 @@ class IconSvg extends FormatterBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = array();
+    $elements = [];
     $wrap = $this->getSetting('wrap');
     $wrap_classes = $this->getSetting('wrap_classes');
     $icon_classes = $this->getSetting('icon_classes');
@@ -165,7 +165,7 @@ class IconSvg extends FormatterBase implements ContainerFactoryPluginInterface {
 
     foreach ($items as $delta => $icon) {
       $icon_size = $this->svgManager->getIconSize($source_realpath, $icon->value);
-      $elements[$delta] = array(
+      $elements[$delta] = [
         '#theme' => 'media_icon_svg_formatter',
         '#icons_path' => $source_path,
         '#wrap' => $wrap,
@@ -175,7 +175,7 @@ class IconSvg extends FormatterBase implements ContainerFactoryPluginInterface {
         '#attributes' => [
           'class' => explode(' ', $icon_classes),
         ] + $icon_size,
-      );
+      ];
       $elements[$delta]['#attributes']['class'][] = $icon->value;
       $elements[$delta]['#wrap_attributes']['class'][] = 'icon';
     }

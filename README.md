@@ -8,13 +8,14 @@ entity within any other Drupal entity.
 
 ## About Media entity icon
 
-This module provides SVG sprites/icons integration for Media entity (i.e. media type
-provider plugin).
+This module provides SVG sprites/icons integration for Media entity
+(i.e. media type provider plugin).
 
 Features:
  - SVG sprite and SVG icon media types
  - Supports both local and CDN sprite sources
- - Sprite administration page to see the available icons, the ones created and the obsolete ones (in case of a source change)
+ - Sprite administration page to see the available icons, the ones created and
+ the obsolete ones (in case of a source change)
  - Option to automatically create icons on a new sprite creation
  - Option to automatically create missing icons on a sprite update
  - Icon thumbnail can be generated as a PNG via SVG2PNG
@@ -22,15 +23,19 @@ Features:
 
 ## Configuration
 
-Thumbnail width and SVG2PNG can be configured on the settings page: /admin/config/media/media_entity_icon  
+Thumbnail width and SVG2PNG can be configured on the settings page:
+/admin/config/media/media_entity_icon  
 This requires the "administer site configuration" permission.
 
-Automated creation of icons at SVG creation/update can be set on the SVG sprite bundle: /admin/structure/media/manage/svg_sprite  
+Automated creation of icons at SVG creation/update can be set on the
+SVG sprite bundle: /admin/structure/media/manage/svg_sprite  
 This requires the "administer media bundles" permission.
 
-Related icons can be managed as a dedicated tab on the SVG media entity: /media/{media}/related_icons  
+Related icons can be managed as a dedicated tab on the SVG media entity:
+/media/{media}/related_icons  
 Accessing to the page requires the "access related icons" permission.  
-Creating icons automatically or via the related icon page requires either "create media" or "autocreate icon" permission.
+Creating icons automatically or via the related icon page requires either
+"create media" or "autocreate icon" permission.
 
 ## Working with SVG sprites
 

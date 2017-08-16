@@ -326,7 +326,7 @@ class SvgSprite extends MediaTypeBase {
    * @return array|bool
    *   Array with success and error as keys or false.
    */
-  public function updateIcons(MediaInterface $media, $icon_ids = [], $message_output = TRUE) {
+  public function updateIcons(MediaInterface $media, array $icon_ids = [], $message_output = TRUE) {
     if (!$this->configuration['target_bundle']) {
       return FALSE;
     }

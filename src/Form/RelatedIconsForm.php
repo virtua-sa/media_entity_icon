@@ -217,11 +217,11 @@ class RelatedIconsForm extends FormBase {
 
     if (!empty($missing_icons)) {
       $form['missing_icons']['actions']['#type'] = 'actions';
-      $form['missing_icons']['actions']['submit'] = array(
+      $form['missing_icons']['actions']['submit'] = [
         '#type' => 'submit',
         '#value' => $this->t('Create icon(s)'),
         '#submit' => ['::createIcon'],
-      );
+      ];
     }
 
     // Existing icons.
@@ -301,11 +301,11 @@ class RelatedIconsForm extends FormBase {
 
     if (!empty($existing_icons)) {
       $form['existing_icons']['actions']['#type'] = 'actions';
-      $form['existing_icons']['actions']['submit'] = array(
+      $form['existing_icons']['actions']['submit'] = [
         '#type' => 'submit',
         '#value' => $this->t('Update thumbnail(s)'),
         '#submit' => ['::updateThumbnail'],
-      );
+      ];
     }
 
     // Obsolete icons.
@@ -379,11 +379,11 @@ class RelatedIconsForm extends FormBase {
       ];
 
       $form['obsolete_icons']['actions']['#type'] = 'actions';
-      $form['obsolete_icons']['actions']['submit'] = array(
+      $form['obsolete_icons']['actions']['submit'] = [
         '#type' => 'submit',
         '#value' => $this->t('Migrate icon(s)'),
         '#submit' => ['::migrateIcon'],
-      );
+      ];
     }
 
     return $form;

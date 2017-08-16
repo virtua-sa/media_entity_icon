@@ -39,21 +39,21 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('Thumbnail generation'),
     ];
 
-    $form['thumbnail']['thumbnail_width'] = array(
+    $form['thumbnail']['thumbnail_width'] = [
       '#type' => 'number',
       '#min' => 1,
       '#step' => 1,
       '#title' => $this->t('Thumbnail width'),
       '#description' => $this->t('The width at which the PNG thumbnail will be generated. If none is provided, the viewbox of the icon will be used.'),
       '#default_value' => $config->get('thumbnail_width'),
-    );
+    ];
 
-    $form['thumbnail']['svg2png_path'] = array(
+    $form['thumbnail']['svg2png_path'] = [
       '#type' => 'textfield',
       '#title' => $this->t('SVG2PNG path'),
       '#description' => $this->t('SVG2PNG binary location, if it is installed globally "svg2png" may be sufficient. If none is provided no PNG thumbnail will generated.'),
       '#default_value' => $config->get('svg2png_path'),
-    );
+    ];
 
     return parent::buildForm($form, $form_state);
   }
