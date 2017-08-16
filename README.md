@@ -39,9 +39,12 @@ Creating icons automatically or via the related icon page requires either
 
 ## Working with SVG sprites
 
-An icon must be coupled with a sprite to work, the SVG sprite entity represents the source file and the SVG icon a pointer to a symbol within it.
+An icon must be coupled with a sprite to work, the SVG sprite entity
+represents the source file and the SVG icon a pointer to a symbol within it.
 
-The SVG parser expect a wrapping ```<svg>```, in which each icon is defined by a ```<symbol>``` with an "id" attribute and some size attributes (either "viewbox" or "width" and "height).
+The SVG parser expect a wrapping ```<svg>```, in which each icon is defined
+by a ```<symbol>``` with an "id" attribute and some size attributes (either
+"viewbox" or "width" and "height).
 
 For example, a very simple SVG sprite with a square, a disc and a triangle:
 ```
