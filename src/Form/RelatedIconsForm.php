@@ -315,58 +315,60 @@ class RelatedIconsForm extends FormBase {
       'actions' => $this->t('Actions'),
     ];
 
-    foreach ($obsolete_icons as $icon_id => $icon_media) {
-      $row = [
-        'thumbnail' => [
-          'data' => [
-            '#theme' => 'image_style',
-            '#style_name' => 'thumbnail',
-            '#uri' => $icon_media->get('thumbnail')->entity->get('uri')->value,
-          ],
-        ],
-        'name' => [
-          'data' => [
-            '#type' => 'link',
-            '#title' => $icon_media->label(),
-            '#url' => Url::fromRoute(
-              'entity.media.canonical',
-              ['media' => $icon_media->id()]
-            ),
-          ],
-        ],
-        'actions' => [
-          'data' => [
-            '#type' => 'actions',
-            'extra' => [
-              '#type' => 'dropbutton',
-              '#links' => [],
+    foreach ($obsolete_icons as $icon_id => $icon_medias) {
+      foreach ($icon_medias as $icon_media) {
+        $row = [
+          'thumbnail' => [
+            'data' => [
+              '#theme' => 'image_style',
+              '#style_name' => 'thumbnail',
+              '#uri' => $icon_media->get('thumbnail')->entity->get('uri')->value,
             ],
           ],
-        ],
-      ];
-
-      if ($this->currentUser->hasPermission('edit media')) {
-        $row['actions']['data']['extra']['#links']['edit'] = [
-          'title' => $this->t('Edit'),
-          'url' => Url::fromRoute(
-            'entity.media.edit_form',
-            ['media' => $icon_media->id()],
-            ['query' => ['destination' => $current_path]]
-          ),
+          'name' => [
+            'data' => [
+              '#type' => 'link',
+              '#title' => $icon_media->label(),
+              '#url' => Url::fromRoute(
+                'entity.media.canonical',
+                ['media' => $icon_media->id()]
+              ),
+            ],
+          ],
+          'actions' => [
+            'data' => [
+              '#type' => 'actions',
+              'extra' => [
+                '#type' => 'dropbutton',
+                '#links' => [],
+              ],
+            ],
+          ],
         ];
-      }
-      if ($this->currentUser->hasPermission('delete media')) {
-        $row['actions']['data']['extra']['#links']['delete'] = [
-          'title' => $this->t('Delete'),
-          'url' => Url::fromRoute(
-            'entity.media.delete_form',
-            ['media' => $icon_media->id()],
-            ['query' => ['destination' => $current_path]]
-          ),
-        ];
-      }
 
-      $form['obsolete_icons'][$statuses['obsolete']]['#options'][$icon_media->id()] = $row;
+        if ($this->currentUser->hasPermission('edit media')) {
+          $row['actions']['data']['extra']['#links']['edit'] = [
+            'title' => $this->t('Edit'),
+            'url' => Url::fromRoute(
+              'entity.media.edit_form',
+              ['media' => $icon_media->id()],
+              ['query' => ['destination' => $current_path]]
+            ),
+          ];
+        }
+        if ($this->currentUser->hasPermission('delete media')) {
+          $row['actions']['data']['extra']['#links']['delete'] = [
+            'title' => $this->t('Delete'),
+            'url' => Url::fromRoute(
+              'entity.media.delete_form',
+              ['media' => $icon_media->id()],
+              ['query' => ['destination' => $current_path]]
+            ),
+          ];
+        }
+
+        $form['obsolete_icons'][$statuses['obsolete']]['#options'][$icon_media->id()] = $row;
+      }
     }
 
     if (!empty($obsolete_icons)) {
