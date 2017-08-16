@@ -151,10 +151,7 @@ class SvgIcon extends MediaTypeBase {
    *   Thumbnail URI of the media.
    */
   public function getThumbnailUri(MediaInterface $media) {
-    $source_uri = $this->getField($media, 'source_uri');
-    $icon_id = $this->getField($media, 'id');
-
-    return $this->thumbnailDir . '/' . basename($source_uri, '.svg') . '--' . $icon_id . '.png';
+    return $this->thumbnailDir . '/' . $media->uuid() . '.png';
   }
 
   /**
