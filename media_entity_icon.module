@@ -42,8 +42,6 @@ function media_entity_icon_preprocess_media_icon_svg_formatter(&$vars) {
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function media_entity_icon_form_media_form_alter(&$form, FormStateInterface $form_state) {
-  $build_info = $form_state->getBuildInfo();
-
   // Has expected query arguments.
   /** @var \Symfony\Component\HttpFoundation\RequestStack $current_request */
   $current_request = \Drupal::service('request_stack')->getCurrentRequest();
@@ -54,7 +52,8 @@ function media_entity_icon_form_media_form_alter(&$form, FormStateInterface $for
   }
 
   // Must be an icon bundle.
-  list(, $bundle_id,) = explode('_', $build_info['form_id'], 3);
+  $form_object = $form_state->getFormObject();
+  $bundle_id = $form_object->getEntity()->bundle();
   $icon_bundle_ids = \Drupal::service('media_entity_icon.manager.svg.type')
     ->getIconBundleNames();
   if (!isset($icon_bundle_ids[$bundle_id])) {
